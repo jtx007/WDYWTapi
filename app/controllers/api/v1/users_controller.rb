@@ -12,9 +12,19 @@ module Api
                 end
             end
 
+            def show
+                user = User.find(params[:id])
+                if user
+                    render json: user, status: :found
+                else
+                    render json: user.errors, status: :not_found
+                end
+            end
+
+
             private
             def user_params
-                params.require(:user).permit(:username, :password)
+                params.require(:user).permit(:username, :password, :avatar)
             end
         end
     end
