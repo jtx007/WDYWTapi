@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Genre.destroy_all
+Genre.create([{ genre_name: 'Action' }, { genre_name: 'Adventure' }, { genre_name: 'Drama' }, { genre_name: 'Comedy'}, { genre_name: 'Romance' }, { genre_name: 'Fantasy' }, { genre_name: 'Anime' }, { genre_name: 'Cartoon' }, { genre_name: 'Documentary'}])
