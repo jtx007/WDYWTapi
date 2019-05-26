@@ -11,5 +11,5 @@
 #
 
 class ShowSerializer < ActiveModel::Serializer
-  attributes :id, :title, :user, :genre, :comments
+  attributes :id, :title, :user, :genre, :comments, :cover_url
 end

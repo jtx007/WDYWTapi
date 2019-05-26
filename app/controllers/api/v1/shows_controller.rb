@@ -19,7 +19,7 @@ module Api
             
             private
             def show_params
-                params.require(:show).permit(:title, :user_id, :genre_id)
+                params.require(:show).permit(:title, :user_id, :genre_id, :cover)
             end
         end
     end
