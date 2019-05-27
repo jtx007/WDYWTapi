@@ -16,9 +16,18 @@ class User < ApplicationRecord
     has_many :shows
     has_many :comments
     validates :username, presence: true, uniqueness: true
-
+    validates :password,
+            length: { minimum: 3 },
+            if: -> { new_record? || !password.nil? }
+    validates :ensure_avatar
 
     def avatar_url
         rails_blob_path(self.avatar, disposition: "attachment", only_path: "true")
+    end
+
+    def ensure_avatar
+        unless self.photo.attached?
+            errors[:avatar] << "must be attached"
+        end
     end
 end
