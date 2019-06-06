@@ -16,6 +16,19 @@ module Api
                 end
             end
 
+            def update
+                comment = Comment.find(params[:id])
+                comment.update(comment_params)
+                comment.save
+                render :comment, status: :accepted
+            end
+
+            def destroy
+                comment = Comment.find(params[:id])
+                comment.destroy
+                render json: comment, status: :ok
+            end
+
             private
             def comment_params
                 params.require(:comment).permit(:comment_body, :user_id, :show_id)
