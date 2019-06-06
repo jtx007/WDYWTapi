@@ -16,16 +16,12 @@ class Show < ApplicationRecord
     belongs_to :genre
     has_one_attached :cover
     has_many :comments
+
     validates :title, presence: :true, uniqueness: :true
-    validates :ensure_cover
 
     def cover_url
         rails_blob_path(self.cover, disposition: "attachment", only_path: "true")
     end
 
-    def ensure_cover
-        unless self.cover.attached?
-            errors[:cover] << "must be attached"
-        end
-    end
+
 end

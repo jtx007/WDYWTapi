@@ -19,15 +19,10 @@ class User < ApplicationRecord
     validates :password,
             length: { minimum: 3 },
             if: -> { new_record? || !password.nil? }
-    validates :ensure_avatar
 
     def avatar_url
         rails_blob_path(self.avatar, disposition: "attachment", only_path: "true")
     end
 
-    def ensure_avatar
-        unless self.photo.attached?
-            errors[:avatar] << "must be attached"
-        end
-    end
+    
 end
